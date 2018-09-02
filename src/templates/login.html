@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+
+{% block header %}
+    <h1>{% block title %}Connexion {{week}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    {% if has_login_err %}
+    <div id="card-alert" class="card red">
+        <div class="card-content white-text">
+            <p>Erreur: Nom d'utilisateur ou mot de passe invalide</p>
+        </div>
+    </div>
+    {% endif %}
+    <fieldset>
+        
+        <label for="uname">Nom d'utilisateur</label>
+        <input id="uname" name="uname" placeholder="Nom d'utilisateur"/>
+
+        <label for="password">Mot de passe</label>
+        <input id="password" type="password" name="password" placeholder="Mot de passe"/>
+        <button type="submit" class="waves-effect waves-light btn" style="width: 25%; font-size: 2em; margin-left: 40%; width: 20%; margin-right: 40%;">Envoyer</button>
+    </fieldset>
+</form>
+{% endblock %}

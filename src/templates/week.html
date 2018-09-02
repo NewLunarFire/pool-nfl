@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Semaine {{week}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="POST" action="">
+    <table>
+      {% for match in matches %}
+        <tr>
+          <td>{{ match.time }}</td>
+          <td>
+            <label>
+              <input type="radio" id="away-{{ match.id }}" name="{{ match.id }}" value="away"  {% if match.pick_away %} checked {% endif %} />
+              <span>{{match.away}}</span>
+            </label>
+          </td>
+          <td>@</td>
+          <td>
+            <label>
+              <input type="radio" id="home-{{ match.id }}" name="{{ match.id }}" value="home" {% if match.pick_home %} checked {% endif %} />
+              <span>{{match.home}}</span>
+            </label>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    
+    <button type="submit" class="waves-effect waves-light btn large-submit">Envoyer</button>
+  </form>
+{% endblock %}
